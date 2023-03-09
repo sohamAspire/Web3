@@ -1,0 +1,36 @@
+{
+  "Data": [
+    {
+      "id": 1,
+      "title": "‘Women’s history is women’s right’",
+      "description": "A tribute to overlooked innovators, good troublemakers, and remarkable women of the past, present, and future",
+      "img": "https://miro.medium.com/v2/resize:fill:400:268/1*q1bV1fG_FQLPbmv4svz2NA.png"
+    },
+    {
+      "id": 2,
+      "title": "How ‘Should’ Makes Us Stupid — And How to Get Smart Again",
+      "description": "When we say we ‘should’ do something, we frame our goal in a way that makes change less likely. Here’s how to motivate differently.",
+      "img": "https://miro.medium.com/v2/resize:fill:400:268/1*s1aE1bTkYmdddkPTqePZuA.jpeg"
+    },
+    {
+      "id": 3,
+      "title": "It’s International Women’s Day, and Quantum has a long way to go",
+      "description": "It’s getting tiring, being a woman in tech. And today, on international women’s day, I want to explain why.",
+      "img": "https://miro.medium.com/v2/resize:fill:400:268/1*W4BK4a1_orxsYN7qJ8J_Kw.png"
+    },
+    {
+      "id": 4,
+      "title": "How Devon Price Redefined ‘Lazy’ and Turned His Medium Essay Into a Book",
+      "description": "An interview with the author of “Laziness Does Not Exist,” the essay that started a conversation about the psychology ",
+      "img": "https://miro.medium.com/v2/resize:fill:400:268/1*Z9Msl9UY6vp_c-dIHzYqPQ.jpeg"
+      
+    }
+  ],
+  "Blogs": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ]
+}

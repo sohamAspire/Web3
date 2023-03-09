@@ -1,0 +1,9 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+.active{
+    color: #000000 !important;
+    text-shadow: 4px 4px 4px #2f99e5 ;
+}
