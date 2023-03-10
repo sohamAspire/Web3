@@ -6,14 +6,14 @@ import {
   MDBIcon,
   MDBNavbarNav,
   MDBNavbarItem,
-  MDBNavbarLink,
   MDBNavbarToggler,
   MDBCollapse,
 } from "mdb-react-ui-kit";
-const Navbar = () => {
+const Navbar = (props) => {
   const [showNavColor, setShowNavColor] = useState(false);
   return (
     <>
+ 
       <MDBNavbar
         expand="lg"
         sticky
@@ -21,7 +21,7 @@ const Navbar = () => {
         style={{ backgroundColor: "#e3f2fd" }}
         className="fs-4"
       >
-        <MDBContainer className="m-0 p-5">
+        <MDBContainer className="m-0 p-4">
           <MDBNavbarToggler
             type="button"
             data-target="#navbarColor02"
@@ -41,11 +41,17 @@ const Navbar = () => {
                 <NavLink to="/blogs">Blogs</NavLink>
               </MDBNavbarItem>
               <MDBNavbarItem className="p-4">
-                <NavLink to="/login">Login</NavLink>
+                <NavLink to="/users">Users</NavLink>
               </MDBNavbarItem>
               <MDBNavbarItem className="p-4">
                 <NavLink to="/signup">Register</NavLink>
               </MDBNavbarItem>
+              {props.status ?
+              <MDBNavbarItem className="p-4">
+                <NavLink to="/login">Login</NavLink>
+              </MDBNavbarItem> :
+                <button className="btn btn-primary p-2 m-4 text-light">Logout</button>
+              }
             </MDBNavbarNav>
           </MDBCollapse>
         </MDBContainer>

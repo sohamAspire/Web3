@@ -23,7 +23,6 @@
       "title": "How Devon Price Redefined ‘Lazy’ and Turned His Medium Essay Into a Book",
       "description": "An interview with the author of “Laziness Does Not Exist,” the essay that started a conversation about the psychology ",
       "img": "https://miro.medium.com/v2/resize:fill:400:268/1*Z9Msl9UY6vp_c-dIHzYqPQ.jpeg"
-      
     }
   ],
   "Blogs": [
@@ -31,6 +30,88 @@
       "id": 1,
       "body": "some comment",
       "postId": 1
+    }
+  ],
+  "Users": [
+    {
+      "FirstName": "Soham",
+      "LastName": "Patel",
+      "Email": "sad@hotmail.com",
+      "Password": "asd",
+      "Role": "user",
+      "id": 1
+    },
+    {
+      "FirstName": "sadas",
+      "LastName": "asda",
+      "Email": "soham@hotmail.com",
+      "Password": "asdas",
+      "Role": "admin",
+      "id": 2
+    },
+    {
+      "FirstName": "Soham",
+      "LastName": "Patel",
+      "Email": "sad@hotmail.com",
+      "Password": "sad",
+      "Role": "",
+      "id": 3
+    },
+    {
+      "FirstName": "Soham",
+      "LastName": "Patel",
+      "Email": "soham@hotmail.com",
+      "Password": "asdd",
+      "Role": "admin",
+      "id": 4
+    },
+    {
+      "FirstName": "Soham",
+      "LastName": "asd",
+      "Email": "mitu2131@gmail.com",
+      "Password": "asda",
+      "Role": "user",
+      "id": 5
+    },
+    {
+      "FirstName": "Soham",
+      "LastName": "Patel",
+      "Email": "mitu2131@gmail.com",
+      "Password": "asd",
+      "Role": "admin",
+      "id": 6
+    },
+    {
+      "FirstName": "Soham",
+      "LastName": "Patel",
+      "Email": "mitu2131@gmail.com",
+      "Password": "asdas",
+      "Role": "user",
+      "id": 7
+    },
+    {
+      "FirstName": "Soham",
+      "LastName": "12313",
+      "Email": "aasd@gmds",
+      "Password": "xzcfsdaf",
+      "Role": "admin",
+      "id": 8
+    },
+    {
+      "FirstName": "Soham",
+      "LastName": "sasdas",
+      "Email": "sad@hotmail.com",
+      "Password": "asdas",
+      "Role": "admin",
+      "id": 9
+    },
+    {
+      "FirstName": "Soham",
+      "LastName": "Patel",
+      "Email": "sad@hotmail.com",
+      "Password": "asdad",
+      "Role": "user",
+      "id": 10
     }
   ]
 }

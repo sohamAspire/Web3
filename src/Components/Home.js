@@ -1,12 +1,11 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
-import Navbar from './Navbar'
+import Blogs from "./Blogs";
 
 const Home = () => {
   return (
     <>
-      <Navbar />
-      <Outlet />
+     <h1 className='text-center'> Home Component</h1>
+     <Blogs></Blogs>
     </>
   );
 };
