@@ -13,15 +13,14 @@ const Navbar = (props) => {
   const [showNavColor, setShowNavColor] = useState(false);
   return (
     <>
- 
       <MDBNavbar
         expand="lg"
         sticky
         light
         style={{ backgroundColor: "#e3f2fd" }}
-        className="fs-4"
+        className="p-2 fs-4"
       >
-        <MDBContainer className="m-0 p-4">
+        <MDBContainer fluid className="m-0 p-2">
           <MDBNavbarToggler
             type="button"
             data-target="#navbarColor02"
@@ -33,7 +32,7 @@ const Navbar = (props) => {
             <MDBIcon icon="bars" fas />
           </MDBNavbarToggler>
           <MDBCollapse show={showNavColor} navbar>
-            <MDBNavbarNav className="me-auto mb-2 mb-lg-0">
+            <MDBNavbarNav className="mb-2 mb-lg-0">
               <MDBNavbarItem className="p-4">
                 <NavLink to="/">Home</NavLink>
               </MDBNavbarItem>
@@ -43,17 +42,22 @@ const Navbar = (props) => {
               <MDBNavbarItem className="p-4">
                 <NavLink to="/users">Users</NavLink>
               </MDBNavbarItem>
-              <MDBNavbarItem className="p-4">
-                <NavLink to="/signup">Register</NavLink>
-              </MDBNavbarItem>
-              {props.status ?
-              <MDBNavbarItem className="p-4">
-                <NavLink to="/login">Login</NavLink>
-              </MDBNavbarItem> :
-                <button className="btn btn-primary p-2 m-4 text-light">Logout</button>
+              {props.status.status ?
+              null
+              : <MDBNavbarItem className="p-4">
+              <NavLink to="/signup">Register</NavLink>
+            </MDBNavbarItem>
               }
             </MDBNavbarNav>
           </MDBCollapse>
+          {/* Condition  */}
+          {props.status.status ? (
+            <button className="btn btn-primary p-3 text-light" onClick={props.status.logOut}>
+              Logout
+            </button>
+          ) : (
+            <NavLink className='p-4' to="/login">Login</NavLink>
+          )}
         </MDBContainer>
       </MDBNavbar>
 

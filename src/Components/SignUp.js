@@ -9,7 +9,6 @@ const SignUp = (props) => {
   const [LastName, setLastName] = useState("");
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
-  const [Role, setRole] = useState("");
   const [Success, setSuccess] = useState();
 
   const SubmitHandler = (event) => {
@@ -20,7 +19,7 @@ const SignUp = (props) => {
         LastName: LastName,
         Email: Email,
         Password: Password,
-        Role: Role,
+        Role: 'user',
       })
       .then((response) => {
         if (response.status === 201) {
@@ -48,7 +47,7 @@ const SignUp = (props) => {
           className="alert alert-success alert-dismissible fade show d-flex justify-content-between p-3"
           role="alert"
         >
-          <strong className="mt-2">Your Data has been Submitted</strong>
+          <strong className="mt-2">Your Blog has been Submitted</strong>
         </div>
       ) : Success === false ? (
         <div
@@ -104,7 +103,7 @@ const SignUp = (props) => {
           value={Password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <div className="form-floating mb-3">
+        {/* <div className="form-floating mb-3">
           <select
             className="form-select"
             id="floatingSelect"
@@ -116,7 +115,7 @@ const SignUp = (props) => {
             <option value="admin">Admin</option>
           </select>
           <label htmlFor="floatingSelect">Role</label>
-        </div>
+        </div> */}
         <MDBBtn type="submit" className="fs-4" block>
           Sign Up
         </MDBBtn>

@@ -11,9 +11,9 @@ const Users = () => {
   }, []);
 
   return (
-    <div className='container'>
+    <div className='container p-0'>
       <table className="table table-hover table-primary text-center">
-        <thead>
+        <thead >
           <tr>
             <th scope="col">#</th>
             <th scope="col">First Name</th>
@@ -23,10 +23,10 @@ const Users = () => {
             <th scope='col'>Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody >
           {state.map((elem) => {
             return (
-              <tr>
+              <tr key={elem.id}  className="p-0">
                 <th scope="col">{elem.id}</th>
                 <th scope="col">{elem.FirstName}</th>
                 <th scope="col">{elem.LastName}</th>

@@ -6,10 +6,10 @@ import {
   } from 'mdb-react-ui-kit';
 import axios from "axios";
 
-const Login = ({statusMethod}) => {
+const Login = (props) => {
 
     const navigate = useNavigate();
-    const [isLoggedIn, setLoggedIn] = useState();
+    let isLoggedIn = false;
     const [Email, setEmail] = useState("");
     const [Password, setPassword] = useState("");
     const submitHandler = (e) =>{
@@ -18,14 +18,14 @@ const Login = ({statusMethod}) => {
       { 
        if(res['data'].find((user) => user.Email === Email) && res['data'].find((user)=> user.Password === Password)){
         console.log('Yes');
-        setLoggedIn(true);
-        statusMethod(isLoggedIn)
+        isLoggedIn = true;
+        props.statusMethod(isLoggedIn)
         navigate('/blogs');
        }
        else{
         console.log('false');
-        setLoggedIn(false);
-        statusMethod(isLoggedIn)
+        isLoggedIn = false;
+        props.statusMethod(isLoggedIn)
        }
       })}
   return (
