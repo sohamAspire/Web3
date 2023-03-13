@@ -1,11 +1,6 @@
 {
   "Blogs": [
     {
-      "id": 1,
-      "Title": "‘Women’s history is women’s right’",
-      "Description": "A tribute to overlooked innovators, good troublemakers, and remarkable women of the past, present, and future"
-    },
-    {
       "id": 2,
       "Title": "How ‘Should’ Makes Us Stupid — And How to Get Smart Again",
       "Description": "When we say we ‘should’ do something, we frame our goal in a way that makes change less likely. Here’s how to motivate differently."
@@ -19,25 +14,15 @@
       "id": 4,
       "Title": "How Devon Price Redefined ‘Lazy’ and Turned His Medium Essay Into a Book",
       "Description": "An interview with the author of “Laziness Does Not Exist,” the essay that started a conversation about the psychology "
-    },
-    {
-      "Title": "Miten Devon Price Redefined ‘Lazy’ ",
-      "Description": "Add",
-      "id": 5
-    },
-    {
-      "Title": "Soham",
-      "Description": "sadsadadasdasd",
-      "id": 6
     }
   ],
   "Users": [
     {
       "FirstName": "Soham",
       "LastName": "Patel",
-      "Email": "sad@hotmail.com",
-      "Password": "asd",
-      "Role": "user",
+      "Email": "Soham@gmail.com",
+      "Password": "SkPatel",
+      "Role": "admin",
       "id": 1
     },
     {
@@ -45,7 +30,7 @@
       "LastName": "asda",
       "Email": "soham@hotmail.com",
       "Password": "asdas",
-      "Role": "admin",
+      "Role": "user",
       "id": 2
     },
     {
@@ -53,7 +38,7 @@
       "LastName": "Patel",
       "Email": "sad@hotmail.com",
       "Password": "sad",
-      "Role": "",
+      "Role": "user",
       "id": 3
     },
     {
@@ -61,7 +46,7 @@
       "LastName": "Patel",
       "Email": "soham@hotmail.com",
       "Password": "asdd",
-      "Role": "admin",
+      "Role": "user",
       "id": 4
     },
     {
@@ -69,7 +54,7 @@
       "LastName": "asd",
       "Email": "mitu2131@gmail.com",
       "Password": "asda",
-      "Role": "user",
+      "Role": "admin",
       "id": 5
     },
     {
@@ -77,7 +62,7 @@
       "LastName": "Patel",
       "Email": "mitu2131@gmail.com",
       "Password": "asd",
-      "Role": "admin",
+      "Role": "user",
       "id": 6
     },
     {
@@ -93,7 +78,7 @@
       "LastName": "12313",
       "Email": "aasd@gmds",
       "Password": "xzcfsdaf",
-      "Role": "admin",
+      "Role": "user",
       "id": 8
     },
     {
@@ -101,7 +86,7 @@
       "LastName": "sasdas",
       "Email": "sad@hotmail.com",
       "Password": "asdas",
-      "Role": "admin",
+      "Role": "user",
       "id": 9
     },
     {
@@ -119,6 +104,30 @@
       "Password": "Sopham",
       "Role": "user",
       "id": 11
+    },
+    {
+      "FirstName": "Soham",
+      "LastName": "Patel",
+      "Email": "sad@hotmail.com",
+      "Password": "sadasd",
+      "Role": "user",
+      "id": 12
+    },
+    {
+      "FirstName": "Soham",
+      "LastName": "asda",
+      "Email": "sad@hotmail.com",
+      "Password": "asdsada",
+      "Role": "user",
+      "id": 13
+    },
+    {
+      "FirstName": "Soham",
+      "LastName": "Patel",
+      "Email": "asdasdafsdggdfjgf@gfhgfdh",
+      "Password": "fdasdadas",
+      "Role": "user",
+      "id": 14
     }
   ]
 }

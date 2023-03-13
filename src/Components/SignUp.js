@@ -23,6 +23,7 @@ const SignUp = (props) => {
       })
       .then((response) => {
         if (response.status === 201) {
+          props.statusMethod.submitHandler(response.status)
           setSuccess(true);
           setTimeout(() => {
             setSuccess(null);
@@ -31,6 +32,7 @@ const SignUp = (props) => {
           setLastName("");
           setEmail("");
           setPassword("");
+
         } else {
           setSuccess(false);
           setTimeout(() => {
@@ -38,7 +40,7 @@ const SignUp = (props) => {
           }, 1000);
         }
       });
-  };
+    };
 
   return (
     <div className="container w-50 mt-2">
@@ -121,7 +123,7 @@ const SignUp = (props) => {
         </MDBBtn>
         <br />
         <br />
-        { !props.statusMethod ?
+        { !props.statusMethod.statusMethod() ?
         <MDBBtn
           type="button"
           className="me-1 fs-4"

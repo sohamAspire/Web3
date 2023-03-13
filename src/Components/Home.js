@@ -1,13 +1,20 @@
 import React  from "react";
+import {
+  MDBBtn
+} from "mdb-react-ui-kit";
+import { useNavigate } from "react-router-dom";
 // import Blogs from "./Blogs";
 
 const Home = () => {
+  const navigate = useNavigate();
 
   return (
-  <>
-    <h1 className="text-center">Home Component</h1>
+  <div className='d-flex justify-content-center mt-2'>
+    <MDBBtn className='container w-100' onClick={()=> navigate('/admin')}>
+          Admin Panel
+    </MDBBtn>
       {/* <Blogs></Blogs> */}
-    </>
+    </div>
   )
 };
 

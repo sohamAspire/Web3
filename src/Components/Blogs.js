@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import Modal from "./Modal";
 import {
@@ -13,10 +14,8 @@ import {
   MDBInput,
   MDBTextArea,
 } from "mdb-react-ui-kit";
-import { useNavigate } from "react-router-dom";
 
 const Blogs = (props) => {
-  const navigate = useNavigate()
   const [Title, setTitle] = useState();
   const [Success, setSuccess] = useState(null);
   const [Description, setDescription] = useState();
@@ -24,7 +23,7 @@ const Blogs = (props) => {
   const [centredModal, setCentredModal] = useState(false);
   const AddShow = () => setCentredModal(!centredModal);
 
-  const AddBlog = (e) => {
+  const AddBlog = useCallback((e) => {
     e.preventDefault();
     axios
       .post("http://localhost:3000/Blogs", {
@@ -47,16 +46,24 @@ const Blogs = (props) => {
           }, 1000);
         }
       });
-  };
+  });
+
+  const DeleteBlog = useCallback((props, id) => {
+    // console.log(props);
+    axios.delete("http://localhost:3000/Blogs/" + id).then((res) => {
+      console.log("Deleted");
+    });
+  });
   useEffect(() => {
     axios.get("http://localhost:3000/Blogs").then((response) => {
+      console.log("Triggering");
       // console.log(response['data']);
       setState([...response["data"]]);
     });
-  }, []);
+  }, [state]);
 
   return (
-    <div>
+    <div className='mt-2'>
       {/* <h1 className="text-center mb-4 ">Blog Page</h1> */}
       {Success === true ? (
         <div
@@ -82,7 +89,7 @@ const Blogs = (props) => {
         </div>
       ) : null}
       <div className="container text-end p-0">
-        <MDBBtn className="w-100 mb-4 p-4 fs-4" outline block onClick={AddShow}>
+        <MDBBtn className="w-100 mb-4 p-3 fs-6" outline block onClick={AddShow}>
           <MDBIcon fas icon="plus" />
           &nbsp;&nbsp;Add Blog
         </MDBBtn>
@@ -130,24 +137,26 @@ const Blogs = (props) => {
         <table className="table table-hover table-primary text-center table-striped">
           <thead>
             <tr>
-              <th scope="col">#</th>
               <th scope="col">Title</th>
               <th scope="col">Description</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
-            {
-              state.map((elem) => {
-                return (
-                  <tr key={elem.id}>
-                  <th scope="col">{elem.id}</th>
+            {state.map((elem) => {
+              return (
+                <tr key={elem.id}>
                   <th scope="col">{elem.Title}</th>
                   <th scope="col">{elem.Description}</th>
                   <th scope="col">
-                    <Modal props={elem}/>
+                    <Modal props={elem} />
                     <button className="btn btn-info m-2">Update</button>
-                    <button className="btn btn-danger m-2">Delete</button>
+                    <button
+                      className="btn btn-danger m-2"
+                      onClick={() => DeleteBlog(elem, elem.id)}
+                    >
+                      Delete
+                    </button>
                   </th>
                 </tr>
               );

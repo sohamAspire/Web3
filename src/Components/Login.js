@@ -17,15 +17,16 @@ const Login = (props) => {
       axios.get("http://localhost:3000/Users").then((res)=> 
       { 
        if(res['data'].find((user) => user.Email === Email) && res['data'].find((user)=> user.Password === Password)){
-        console.log('Yes');
+        let Role = res['data'].find((user) => user.Email === Email) && res['data'].find((user)=> user.Password === Password).Role
         isLoggedIn = true;
-        props.statusMethod(isLoggedIn)
+        props.statusMethod(isLoggedIn , Role)
         navigate('/blogs');
        }
        else{
         console.log('false');
+        let Role = 'False'
         isLoggedIn = false;
-        props.statusMethod(isLoggedIn)
+        props.statusMethod(isLoggedIn, Role)
        }
       })}
   return (

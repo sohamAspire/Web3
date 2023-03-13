@@ -18,9 +18,9 @@ const Navbar = (props) => {
         sticky
         light
         style={{ backgroundColor: "#e3f2fd" }}
-        className="p-2 fs-4"
+        className="p-0 fs-6"
       >
-        <MDBContainer fluid className="m-0 p-2">
+        <MDBContainer fluid className="m-0 p-0">
           <MDBNavbarToggler
             type="button"
             data-target="#navbarColor02"
@@ -33,35 +33,41 @@ const Navbar = (props) => {
           </MDBNavbarToggler>
           <MDBCollapse show={showNavColor} navbar>
             <MDBNavbarNav className="mb-2 mb-lg-0">
-              <MDBNavbarItem className="p-4">
-                <NavLink to="/">Home</NavLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem className="p-4">
-                <NavLink to="/blogs">Blogs</NavLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem className="p-4">
+              {props.status.Role1 === "admin" ? (
+                <>
+                <MDBNavbarItem className="p-2 mx-2">
+                  <NavLink to="/">Home</NavLink>
+                </MDBNavbarItem>
+              <MDBNavbarItem className="p-2 mx-2">
                 <NavLink to="/users">Users</NavLink>
               </MDBNavbarItem>
-              {props.status.status ?
-              null
-              : <MDBNavbarItem className="p-4">
-              <NavLink to="/signup">Register</NavLink>
-            </MDBNavbarItem>
-              }
+                </>
+              ) : null}
+              <MDBNavbarItem className="p-2 mx-2">
+                <NavLink to="/blogs">Blogs</NavLink>
+              </MDBNavbarItem>
+              {props.status.status ? null : (
+                <MDBNavbarItem className="p-2 mx-2">
+                  <NavLink to="/signup">Register</NavLink>
+                </MDBNavbarItem>
+              )}
             </MDBNavbarNav>
           </MDBCollapse>
           {/* Condition  */}
           {props.status.status ? (
-            <button className="btn btn-primary p-3 text-light" onClick={props.status.logOut}>
+            <button
+              className="btn btn-primary p-3 text-light"
+              onClick={props.status.logOut}
+            >
               Logout
             </button>
           ) : (
-            <NavLink className='p-4' to="/login">Login</NavLink>
+            <NavLink className="p-2 m-2" to="/login">
+              Login
+            </NavLink>
           )}
         </MDBContainer>
       </MDBNavbar>
-
-      <br />
     </>
   );
 };
