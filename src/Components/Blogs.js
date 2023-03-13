@@ -60,7 +60,7 @@ const Blogs = (props) => {
       // console.log(response['data']);
       setState([...response["data"]]);
     });
-  }, [state]);
+  }, []);
 
   return (
     <div className='mt-2'>
