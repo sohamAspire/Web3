@@ -3,6 +3,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
 const Users = () => {
+  const [Reload ,setReload] = useState(false);
   const [state, setState] = useState([]);
   const ChangeRole = useCallback((props, id) => {
     if (props.Role === "admin") {
@@ -18,6 +19,7 @@ const Users = () => {
           // console.log(response['data']);
           console.log(response);
           console.log("Changed to User");
+          setReload(!Reload)
         });
     } else {
       axios
@@ -32,6 +34,7 @@ const Users = () => {
           // console.log(response['data']);
           console.log(response);
           console.log("Changed to Admin");
+          setReload(!Reload)
         });
     }
   }, []);
@@ -40,7 +43,7 @@ const Users = () => {
       // console.log(response['data']);
       setState([...response["data"]]);
     });
-  }, [()=>ChangeRole]);
+  }, [Reload]);
 
   return (
     <div className="container p-0 mt-2">

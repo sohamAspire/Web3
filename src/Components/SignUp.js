@@ -23,7 +23,6 @@ const SignUp = (props) => {
       })
       .then((response) => {
         if (response.status === 201) {
-          props.statusMethod.submitHandler(response.status)
           setSuccess(true);
           setTimeout(() => {
             setSuccess(null);
@@ -32,7 +31,7 @@ const SignUp = (props) => {
           setLastName("");
           setEmail("");
           setPassword("");
-
+          props.statusMethod.submitHandler(response.status)
         } else {
           setSuccess(false);
           setTimeout(() => {

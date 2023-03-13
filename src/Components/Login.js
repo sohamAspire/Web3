@@ -18,15 +18,17 @@ const Login = (props) => {
       { 
        if(res['data'].find((user) => user.Email === Email) && res['data'].find((user)=> user.Password === Password)){
         let Role = res['data'].find((user) => user.Email === Email) && res['data'].find((user)=> user.Password === Password).Role
+        let Id = res['data'].find((user) => user.Email === Email) && res['data'].find((user)=> user.Password === Password).id
         isLoggedIn = true;
-        props.statusMethod(isLoggedIn , Role)
+        props.statusMethod(isLoggedIn , Role , Id)
         navigate('/blogs');
        }
        else{
         console.log('false');
-        let Role = 'False'
+        let Role = null
+        let Id = null
         isLoggedIn = false;
-        props.statusMethod(isLoggedIn, Role)
+        props.statusMethod(isLoggedIn, Role , Id)
        }
       })}
   return (

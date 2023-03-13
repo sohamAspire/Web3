@@ -14,19 +14,20 @@ import Protected from "./Components/Protected";
 function App() {
   const [status, setStatus] = useState(null);
   const [Role1, setRole] = useState('');
+  const [userId, setuserId] = useState('');
   const navigate = useNavigate();
-  const statusMethod = (propsStatus, Role) => {
+  const statusMethod = (propsStatus, Role ,Id) => {
     setStatus(propsStatus);
     console.log(Role);
-    setRole(Role)
+    setRole(Role);
+    setuserId(Id)
   };
-  // const logIn = () => {
-  //   setisLoggedIn(true);
-  // };
+
   const logOut = () => {
     setStatus(false);
     navigate("/login");
     setRole('user')
+    setuserId(null)
   };
 
   return (
@@ -39,7 +40,7 @@ function App() {
           path="/signup"
           element={<SignUp statusMethod={{ statusMethod }} />}
         />
-        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/blogs" element={<Blogs Id={userId} isLoggedIn={status} />} />
         <Route path="/users" element={<Users />} />
         <Route path="/admin/" element={<Protected isLoggedIn={status}><Admin /></Protected> }>
           <Route path="users" element={ <Protected isLoggedIn={status}> <Users /> </Protected>  } />

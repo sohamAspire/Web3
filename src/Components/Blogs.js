@@ -16,24 +16,31 @@ import {
 } from "mdb-react-ui-kit";
 
 const Blogs = (props) => {
+
+  console.log(props);
+  // This Reload os to updating state
+  const [Reload, setReload] = useState(true);
   const [Title, setTitle] = useState();
   const [Success, setSuccess] = useState(null);
   const [Description, setDescription] = useState();
   const [state, setState] = useState([]);
+  const [users, setUsers] = useState([]);
   const [centredModal, setCentredModal] = useState(false);
   const AddShow = () => setCentredModal(!centredModal);
 
-  const AddBlog = useCallback((e) => {
+  const AddBlog = (e) => {
     e.preventDefault();
     axios
       .post("http://localhost:3000/Blogs", {
         Title: Title,
         Description: Description,
+        UserID: props.Id
       })
       .then((response) => {
         // console.log(response);
         if (response.status === 201) {
           // console.log("Successfully Added");
+          setReload(!Reload);
           setSuccess(true);
           setTimeout(() => {
             setSuccess(null);
@@ -46,24 +53,30 @@ const Blogs = (props) => {
           }, 1000);
         }
       });
-  });
+  };
 
   const DeleteBlog = useCallback((props, id) => {
     // console.log(props);
+    setReload(!Reload);
     axios.delete("http://localhost:3000/Blogs/" + id).then((res) => {
       console.log("Deleted");
     });
   });
   useEffect(() => {
     axios.get("http://localhost:3000/Blogs").then((response) => {
-      console.log("Triggering");
+      console.log("Blogs");
       // console.log(response['data']);
       setState([...response["data"]]);
     });
-  }, []);
+    axios.get("http://localhost:3000/Users").then((response) => {
+      console.log("Users");
+      // console.log(response['data']);
+      setUsers([...response["data"]]);
+    });
+  }, [Reload]);
 
   return (
-    <div className='mt-2'>
+    <div className="mt-2">
       {/* <h1 className="text-center mb-4 ">Blog Page</h1> */}
       {Success === true ? (
         <div
@@ -89,10 +102,17 @@ const Blogs = (props) => {
         </div>
       ) : null}
       <div className="container text-end p-0">
-        <MDBBtn className="w-100 mb-4 p-3 fs-6" outline block onClick={AddShow}>
-          <MDBIcon fas icon="plus" />
-          &nbsp;&nbsp;Add Blog
-        </MDBBtn>
+        {props.isLoggedIn ? (
+          <MDBBtn
+            className="w-100 mb-4 p-3 fs-6"
+            outline
+            block
+            onClick={AddShow}
+          >
+            <MDBIcon fas icon="plus" />
+            &nbsp;&nbsp;Add Blog
+          </MDBBtn>
+        ) : null}
       </div>
       {/* Modal */}
       <MDBModal tabIndex="-1" show={centredModal} setShow={setCentredModal}>
@@ -139,6 +159,7 @@ const Blogs = (props) => {
             <tr>
               <th scope="col">Title</th>
               <th scope="col">Description</th>
+              <th scope="col">User</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
@@ -148,6 +169,9 @@ const Blogs = (props) => {
                 <tr key={elem.id}>
                   <th scope="col">{elem.Title}</th>
                   <th scope="col">{elem.Description}</th>
+                    {
+                    // users.find((user)=>user.id === elem.UserID) ? <th scope='col'>{user.FirstName}</th> : null
+                    }
                   <th scope="col">
                     <Modal props={elem} />
                     <button className="btn btn-info m-2">Update</button>

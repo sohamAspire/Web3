@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import {
   MDBModalFooter,
   MDBBtn,
@@ -11,7 +11,6 @@ import {
 } from "mdb-react-ui-kit";
 
 const Modal = (props) => {
-  const [data, setdata] = useState()
   const [basicModal, setBasicModal] = useState(false);
   const toggleShow = () => setBasicModal(!basicModal);
   const Btn = ()=>{
