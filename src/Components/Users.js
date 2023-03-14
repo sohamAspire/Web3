@@ -5,7 +5,7 @@ import axios from "axios";
 const Users = () => {
   const [Reload ,setReload] = useState(false);
   const [state, setState] = useState([]);
-  const ChangeRole = useCallback((props, id) => {
+  const ChangeRole = (props, id) => {
     if (props.Role === "admin") {
       axios
         .put("http://localhost:3000/Users/" + id, {
@@ -17,9 +17,9 @@ const Users = () => {
         })
         .then((response) => {
           // console.log(response['data']);
+          setReload(!Reload)
           console.log(response);
           console.log("Changed to User");
-          setReload(!Reload)
         });
     } else {
       axios
@@ -32,12 +32,12 @@ const Users = () => {
         })
         .then((response) => {
           // console.log(response['data']);
+          setReload(!Reload)
           console.log(response);
           console.log("Changed to Admin");
-          setReload(!Reload)
         });
     }
-  }, []);
+  }
   useEffect(() => {
     axios.get("http://localhost:3000/Users").then((response) => {
       // console.log(response['data']);

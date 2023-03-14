@@ -1,4 +1,4 @@
-import React,{useState}from "react";
+import React,{ useState}from "react";
 import { useNavigate } from "react-router-dom";
 import {
     MDBInput,
@@ -9,28 +9,32 @@ import axios from "axios";
 const Login = (props) => {
 
     const navigate = useNavigate();
-    let isLoggedIn = false;
+    let isLoggedIn = null;
     const [Email, setEmail] = useState("");
     const [Password, setPassword] = useState("");
     const submitHandler = (e) =>{
       e.preventDefault();
       axios.get("http://localhost:3000/Users").then((res)=> 
       { 
-       if(res['data'].find((user) => user.Email === Email) && res['data'].find((user)=> user.Password === Password)){
-        let Role = res['data'].find((user) => user.Email === Email) && res['data'].find((user)=> user.Password === Password).Role
-        let Id = res['data'].find((user) => user.Email === Email) && res['data'].find((user)=> user.Password === Password).id
+        const validate = res['data'].find((user) => user.Email === Email) && res['data'].find((user)=> user.Password === Password) 
+       if(validate){
+        let Role = validate.Role
+        let Id = validate.id
+        // let userName = res['data'].find((user) => user.Email === Email) && res['data'].find((user)=> user.Password === Password).FirstName
         isLoggedIn = true;
         props.statusMethod(isLoggedIn , Role , Id)
         navigate('/blogs');
        }
        else{
         console.log('false');
-        let Role = null
+        let Role = 'user';
         let Id = null
+        // let userName = null
         isLoggedIn = false;
-        props.statusMethod(isLoggedIn, Role , Id)
+        props.statusMethod(isLoggedIn, Role , Id )
        }
       })}
+
   return (
     <div className="container w-50 mt-5">
       <form onSubmit={submitHandler}>

@@ -19,7 +19,7 @@ const Modal = (props) => {
   return (
     <>
       <MDBBtn onClick={Btn} className="m-2">
-        View
+      <i className="fas fa-eye"></i>
       </MDBBtn>
       <MDBModal tabIndex="-1" show={basicModal} setShow={setBasicModal}>
         <MDBModalDialog centered>

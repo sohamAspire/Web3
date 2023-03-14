@@ -55,12 +55,17 @@ const Navbar = (props) => {
           </MDBCollapse>
           {/* Condition  */}
           {props.status.status ? (
+            <>
+            <span>
+              {props.status.LoggedUser}
+            </span>
             <button
               className="btn btn-primary p-3 text-light"
               onClick={props.status.logOut}
             >
               Logout
             </button>
+            </>
           ) : (
             <NavLink className="p-2 m-2" to="/login">
               Login
