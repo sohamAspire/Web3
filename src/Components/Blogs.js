@@ -70,6 +70,9 @@ const Blogs = (props) => {
     });
   }, [Reload]);
 
+  const updateReload = (props)=>{
+    console.log(props);
+  }
   // useEffect(() =>{
   //   axios.get("http://localhost:3000/Users").then((response) => {
   //     // console.log(response['data']);
@@ -176,7 +179,7 @@ const Blogs = (props) => {
                           <th scope="col">{elem.Description}</th>
                           <th scope="col">
                             <Modal props={elem} />
-                            <Update props={elem} />
+                            <Update props={elem.id} updateReload={updateReload} />
                             <button
                               className="btn btn-danger m-2"
                               onClick={() => DeleteBlog(elem, elem.id)}
@@ -190,15 +193,11 @@ const Blogs = (props) => {
                   })
               : state.map((item) => {
                   return (
-                    <>
-                      <tr key={item.id}>
-                        <th scope="col">{item.Title}</th>
-                        <th scope="col">{item.Description}</th>
-                        <th scope="col">
-                            No Actions
-                        </th>
-                      </tr>
-                    </>
+                    <tr key={item.id}>
+                      <th scope="col">{item.Title}</th>
+                      <th scope="col">{item.Description}</th>
+                      <th scope="col">No Actions</th>
+                    </tr>
                   );
                 })}
           </tbody>

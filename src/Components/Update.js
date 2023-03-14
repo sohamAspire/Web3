@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import {
   MDBModalFooter,
   MDBBtn,
@@ -14,6 +15,7 @@ import {
 
 const Update = (props) => {
   const [basicModal1, setBasicModal1] = useState(false);
+  const [Reload , setReload]= useState(true) 
   const [Title, setTitle] = useState();
   const [Description, setDescription] = useState();
   const toggleShow = () => setBasicModal1(!basicModal1);
@@ -21,10 +23,22 @@ const Update = (props) => {
     toggleShow();
   };
 
-  const AddBlog = ()=>{
-    
-  }
-
+  const UpdateBlog = (e)=>{
+    console.log(props.props);
+    e.preventDefault()
+      axios
+        .put("http://localhost:3000/Blogs/" + props.props, {
+          Title : Title,
+          Description : Description,
+          UserID : props.props
+        })
+        .then((response) => {
+          // console.log(response['data']);
+          setReload(!Reload)
+          console.log(response);
+          console.log("Updated");
+        });
+      }
   return (
     <>
       <MDBBtn onClick={update} className="m-2 btn-info">
@@ -42,8 +56,7 @@ const Update = (props) => {
               ></MDBBtn>
             </MDBModalHeader>
             <MDBModalBody>
-              <form onSubmit={AddBlog}>
-                Title
+              <form onSubmit={UpdateBlog}>
                 <MDBInput
                   label="Title"
                   id="typeText"
@@ -51,7 +64,6 @@ const Update = (props) => {
                   onChange={(event) => setTitle(event.target.value)}
                 />
                 <br />
-                Description
                 <MDBTextArea
                   label="Description"
                   id="textAreaExample"
