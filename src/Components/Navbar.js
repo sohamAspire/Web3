@@ -10,6 +10,7 @@ import {
   MDBCollapse,
 } from "mdb-react-ui-kit";
 const Navbar = (props) => {
+  console.log(props);
   const [showNavColor, setShowNavColor] = useState(false);
   return (
     <>
@@ -56,11 +57,11 @@ const Navbar = (props) => {
           {/* Condition  */}
           {props.status.status ? (
             <>
-            <span>
-              {props.status.LoggedUser}
+            <span className="p-4">Welcome ,  
+             &nbsp;{props.status.user.FirstName}
             </span>
             <button
-              className="btn btn-primary p-3 text-light"
+              className="btn btn-primary p-3 text-light mx-2"
               onClick={props.status.logOut}
             >
               Logout

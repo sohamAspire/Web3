@@ -34,7 +34,7 @@ const Modal = (props) => {
             </MDBModalHeader>
             <MDBModalBody>
                 <div>
-                <h1 className="h4">Title {props.props.Title}</h1>
+                <h1 className="h4">Title: {props.props.Title}</h1>
                 <h1 className="h4">Description: {props.props.Description}</h1>
                 </div>
             </MDBModalBody>

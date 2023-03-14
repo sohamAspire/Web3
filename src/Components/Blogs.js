@@ -14,15 +14,17 @@ import {
   MDBInput,
   MDBTextArea,
 } from "mdb-react-ui-kit";
+import Update from "./Update";
 
 const Blogs = (props) => {
+  // console.log(props.user.id);
   // This Reload os to updating state
   const [Reload, setReload] = useState(true);
   const [Title, setTitle] = useState();
   const [Success, setSuccess] = useState(null);
   const [Description, setDescription] = useState();
   const [state, setState] = useState([]);
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([] );
   const [centredModal, setCentredModal] = useState(false);
   const AddShow = () => setCentredModal(!centredModal);
 
@@ -32,7 +34,7 @@ const Blogs = (props) => {
       .post("http://localhost:3000/Blogs", {
         Title: Title,
         Description: Description,
-        UserID: props.Id,
+        UserID: props.user.id,
       })
       .then((response) => {
         // console.log(response);
@@ -66,19 +68,18 @@ const Blogs = (props) => {
       // console.log(response['data']);
       setState([...response["data"]]);
     });
-
   }, [Reload]);
 
-  useEffect(() =>{
-    axios.get("http://localhost:3000/Users").then((response) => {
-      // console.log(response['data']);
-      console.log("Triggered");
-      setUsers([response["data"]]);
-    });
-  } ,[])
+  // useEffect(() =>{
+  //   axios.get("http://localhost:3000/Users").then((response) => {
+  //     // console.log(response['data']);
+  //     console.log("Triggered");
+  //     setUsers(response["data"]);
+  //   });
+  // } ,[Reload])
 
   return (
-    <div className="mt-2">
+    <div className="mt-4">
       {/* <h1 className="text-center mb-4 ">Blog Page</h1> */}
       {Success === true ? (
         <div
@@ -103,16 +104,15 @@ const Blogs = (props) => {
           </button>
         </div>
       ) : null}
-      <div className="container text-end p-0">
+      <div className="container text-end p-3">
         {props.isLoggedIn ? (
           <MDBBtn
-            className="w-100 mb-4 p-3 fs-6"
-            outline
+            className="mb-4 p-4 fs-6"
             block
+            style={{ width: "5%" }}
             onClick={AddShow}
           >
             <MDBIcon fas icon="plus" />
-            &nbsp;&nbsp;Add Blog
           </MDBBtn>
         ) : null}
       </div>
@@ -161,36 +161,46 @@ const Blogs = (props) => {
             <tr>
               <th scope="col">Title</th>
               <th scope="col">Description</th>
-              {props.isLoggedIn && props.Role === "admin" ? (
-                <th scope="col">User</th>
-              ) : null}
               <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
-            {state.map((elem) => {
-              return (
-                <tr key={elem.id}>
-                  <th scope="col">{elem.Title}</th>
-                  <th scope="col">{elem.Description}</th>
-                  {(props.isLoggedIn === true && props.Role === 'admin')
-                    ? <th scope="col">
-                   {console.log(users)}
-                    </th> 
-                   : null }
-                  <th scope="col">
-                    <Modal props={elem} />
-                    <button className="btn btn-info m-2"><i className="fas fa-edit"></i></button>
-                    <button
-                      className="btn btn-danger m-2"
-                      onClick={() => DeleteBlog(elem, elem.id)}
-                    >
-                      <i className="far fa-trash-alt"></i>
-                    </button>
-                  </th>
-                </tr>
-              );
-            })}
+            {props.isLoggedIn === true
+              ? state
+                  .filter((elem) => elem.UserID === props.user.id)
+                  .map((elem) => {
+                    return (
+                      <tr key={elem.id}>
+                        <>
+                          <th scope="col">{elem.Title}</th>
+                          <th scope="col">{elem.Description}</th>
+                          <th scope="col">
+                            <Modal props={elem} />
+                            <Update props={elem} />
+                            <button
+                              className="btn btn-danger m-2"
+                              onClick={() => DeleteBlog(elem, elem.id)}
+                            >
+                              <i className="far fa-trash-alt"></i>
+                            </button>
+                          </th>
+                        </>
+                      </tr>
+                    );
+                  })
+              : state.map((item) => {
+                  return (
+                    <>
+                      <tr key={item.id}>
+                        <th scope="col">{item.Title}</th>
+                        <th scope="col">{item.Description}</th>
+                        <th scope="col">
+                            No Actions
+                        </th>
+                      </tr>
+                    </>
+                  );
+                })}
           </tbody>
         </table>
         {/* View Modal  */}
